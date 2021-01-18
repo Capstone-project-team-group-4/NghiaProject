@@ -28,7 +28,6 @@ function App (): ReactElement {
   
   function signUp (event: MouseEvent<HTMLButtonElement | MouseEvent>){
     userAPI = new UserAPI ();
-    console.log (user);
     event.preventDefault ();
     userAPI.registerUser (user);
   }
@@ -72,21 +71,9 @@ function App (): ReactElement {
                 onChange = {(event) => {setUser (updateUser (event));}}
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="Email-address"
-                onChange = {(event) => {setUser (updateUser (event));}}
-              />
             </Grid>
             <Grid item xs={12}>
             </Grid>
-          </Grid>
           <Button
             type="submit"
             fullWidth
