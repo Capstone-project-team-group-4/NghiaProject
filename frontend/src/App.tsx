@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent, ReactElement, useState } from 'react';
+import React, { ChangeEvent, FormEvent, ReactElement, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -26,10 +26,10 @@ function App (): ReactElement {
     return updatedUser;
   } 
   
-  function signUp (event: MouseEvent<HTMLButtonElement | MouseEvent>){
-    userAPI = new UserAPI ();
+  function signUp (event: FormEvent<HTMLFormElement>){
     event.preventDefault ();
-    userAPI.registerUser (user);
+    userAPI = new UserAPI ();
+    userAPI.registerUser (user);  
   }
 
   return (
@@ -42,7 +42,11 @@ function App (): ReactElement {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form noValidate>
+        <form 
+          noValidate 
+          onSubmit = {(event) => {
+              signUp (event);
+        }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -53,9 +57,10 @@ function App (): ReactElement {
                 fullWidth
                 id="userID"
                 label="User ID"
-                // value = {user.userID}
                 autoFocus
-                onChange = {(event) => {setUser (updateUser (event));}}
+                onChange = {(event) => {
+                  setUser (updateUser (event));
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -68,18 +73,19 @@ function App (): ReactElement {
                 type="text"
                 id="userName"
                 autoComplete="User-name"
-                onChange = {(event) => {setUser (updateUser (event));}}
+                onChange = {(event) => {
+                  setUser (updateUser (event));
+                }}
               />
-            </Grid>
             </Grid>
             <Grid item xs={12}>
             </Grid>
+          </Grid>
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            onClick = {(event) => {signUp (event);}}
           >
             Sign Up
           </Button>
