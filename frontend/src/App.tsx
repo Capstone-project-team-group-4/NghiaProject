@@ -69,9 +69,9 @@ function App (): ReactElement {
                 required
                 fullWidth
                 name="userName"
-                label="User Name"
+                label="user Name"
                 type="text"
-                id="userName"
+                id="UserName"
                 autoComplete="User-name"
                 onChange = {(event) => {
                   setUser (updateUser (event));
