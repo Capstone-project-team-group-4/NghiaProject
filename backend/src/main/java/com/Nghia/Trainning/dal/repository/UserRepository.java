@@ -20,4 +20,7 @@ public interface UserRepository extends JpaRepository<Users, String> {
     @Override
     public boolean existsById(String userID);
 
+    @Override
+    public void deleteById(String userID);
+
 }
