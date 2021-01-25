@@ -38,7 +38,7 @@ export class UserAPI {
         this.axiosInstance = this.axiosInstanceGetter.getNewInstance ();
         try {
             this.serverResponse = await this.axiosInstance.delete (
-                "/users/" + userID
+                `/users/${userID}`
             );
             this.typeGuardian = new TypeGuard ();
             if (this.typeGuardian.isAxiosResponse (this.serverResponse)){
@@ -51,6 +51,6 @@ export class UserAPI {
         catch (error){
             console.error (error.toJSON ());
             return Promise.reject<AxiosResponse> (error);
-        }   
+        }
     }
 }

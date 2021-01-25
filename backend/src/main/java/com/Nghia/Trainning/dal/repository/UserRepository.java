@@ -5,22 +5,22 @@
  */
 package com.Nghia.Trainning.dal.repository;
 
-import com.Nghia.Trainning.model.Users;
+import com.Nghia.Trainning.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author DELL
  */
-public interface UserRepository extends JpaRepository<Users, String> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Override
-    public Users save(Users users);
+    public User save(User users);
 
     @Override
-    public boolean existsById(String userID);
+    public boolean existsById(Integer userID);
 
     @Override
-    public void deleteById(String userID);
+    public void deleteById(Integer userID);
 
 }

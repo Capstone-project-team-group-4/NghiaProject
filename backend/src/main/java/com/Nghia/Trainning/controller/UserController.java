@@ -6,7 +6,7 @@
 package com.Nghia.Trainning.controller;
 
 import com.Nghia.Trainning.dal.repository.UserRepository;
-import com.Nghia.Trainning.model.Users;
+import com.Nghia.Trainning.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +36,8 @@ public class UserController {
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void registerUser(@RequestBody Users users) {
-        String userID;
+    public void registerUser(@RequestBody User users) {
+        int userID;
         boolean userAlreadyExist;
 
         userID = users.getUserID();
@@ -52,7 +52,7 @@ public class UserController {
     @DeleteMapping("/users/{userID}")
     @ResponseStatus(HttpStatus.OK)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void deleteUser(@PathVariable String userID) {
+    public void deleteUser(@PathVariable int userID) {
         boolean userAlreadyExist;
         userAlreadyExist = userRepository.existsById(userID);
         if (userAlreadyExist == true) {
